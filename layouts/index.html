@@ -1,0 +1,25 @@
+{{ define "main" }}
+<main aria-role="main">
+  <header class="homepage-header">
+    <h1>{{.Title}}</h1>
+    <!--
+    {{ with .Params.subtitle }}
+    <span class="subtitle">{{.}}</span>
+    {{ end }}
+    -->
+  </header>
+  <div class="homepage-content">
+    {{.Content}}
+  </div>
+  {{ with .Site.Params.homepageRecentPosts -}}
+  <div class="homepage-recent">
+    <h2>Recent Posts</h2>
+    <ul>
+      {{ range first . (where $.Site.RegularPages "Type" "blog").ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{- .Title | markdownify }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  {{- end }}
+</main>
+{{ end }}

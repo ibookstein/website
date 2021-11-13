@@ -1,0 +1,63 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "Example Title"
+
+# Theme
+theme = "simple-hugo-theme"
+
+# Pagination
+paginate = 10
+paginatePath = "page"
+
+# Copyright
+copyright = "© 2021 — Itay Bookstein — CC BY 4.0"
+
+# Highlighting
+[markup.highlight]
+lineNos = true
+style = "monokai"
+
+# Math
+math = false
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[params]
+  homepageRecentPosts = 5
+
+# Menu
+[menu]
+  # Header
+  [[menu.main]]
+    url = "/blog/"
+    name = "blog"
+    weight = 1
+  [[menu.main]]
+    url = "/about/"
+    name = "about"
+    weight = 4
+
+  # Footer
+  [[menu.footer]]
+    url = "https://github.com/ibookstein"
+    name = "GitHub"
+    weight = 1
+  [[menu.footer]]
+    url = "/blog/index.xml"
+    name = "RSS"
+    weight = 2
+  [[menu.footer]]
+    url = "mailto:foo@bar.com"
+    name = "Contact"
+    weight = 3
+
+# Links format
+[permalinks]
+  blog = "/blog/:year/:month/:filename/"
+  writing = "/writing/:year/:month/:filename/"
+
+[markup.goldmark.renderer]
+unsafe = true

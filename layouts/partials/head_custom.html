@@ -1,0 +1,41 @@
+<link rel="shortcut icon" href="/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Tinos&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Tinos', serif; }
+pre { font-family: 'Ubuntu Mono', monospace; }
+code { font-family: 'Ubuntu Mono', monospace; }
+
+@media (prefers-color-scheme: dark) {
+    /* https://www.hanselman.com/blog/how-to-detect-if-the-users-os-prefers-dark-mode-and-change-your-site-with-css-and-js */
+    body {
+        color: #b0b0b0;
+        background-color: #101010;
+    }
+
+    /* https://bugs.chromium.org/p/chromium/issues/detail?id=1066811 */
+    a:link {
+        color: #9E9EFF;
+    }
+    a:visited {
+        color: #D0ADF0;
+    }
+    a:active {
+        color: #FF9E9E;
+    }
+}
+</style>
+
+{{ with $.Param "math" -}}
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+        }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{{- end }}
