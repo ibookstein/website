@@ -2,7 +2,7 @@
 	path = public
 	url = git@github.com:ibookstein/ibookstein.github.io
 	branch = main
-[submodule "themes/simple-hugo-theme"]
-	path = themes/simple-hugo-theme
-	url = git@github.com:ibookstein/simple-hugo-theme
-	branch = master
+[submodule "themes/gokarna"]
+	path = themes/gokarna
+	url = git@github.com:526avijitgupta/gokarna
+	branch = main

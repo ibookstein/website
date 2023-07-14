@@ -1,63 +1,84 @@
-baseURL = "https://example.com/"
-languageCode = "en-us"
-title = "Example Title"
+baseURL = "https://ibookstein.github.io/"
+title = "Working Title"
+theme = "gokarna"
 
-# Theme
-theme = "simple-hugo-theme"
+languageCode = "en"
+defaultContentLanguage = "en"
+enableEmoji = true
+enableRobotsTXT = true
 
-# Pagination
-paginate = 10
-paginatePath = "page"
+pygmentsStyle = "nord"
 
-# Copyright
-copyright = "© 2021 — Itay Bookstein — CC BY 4.0"
-
-# Highlighting
-[markup.highlight]
-lineNos = true
-style = "monokai"
-
-# Math
-math = false
-
-# Taxonomies
-[taxonomies]
-  tag = "tags"
-  category = "categories"
+copyright = "© 2023 — Itay Bookstein — CC BY 4.0"
 
 [params]
-  homepageRecentPosts = 5
+  description = "Itay's Blog"
+  socialIcons = [
+    {name = "github", url = "https://github.com/ibookstein"},
+    {name = "email", url = "mailto:ibookstein@gmail.com"}
+  ]
+  metaKeywords = ["blog", "tech", "rust"]
+  showPostsOnHomePage = "recent"
+  customHeadHTML = '''
+    <style>
+    /* Disable floating header. */
 
-# Menu
+    #content {
+        margin-top: 0 !important;
+    }
+
+    .header {
+        position: relative !important;
+    }
+
+    .header-shadow {
+        box-shadow: none !important;
+    }
+    </style>
+  '''
 [menu]
-  # Header
   [[menu.main]]
-    url = "/blog/"
-    name = "blog"
+    name = "Home"
+    pre = "<span data-feather='home'></span>"
+    url = "/"
     weight = 1
-  [[menu.main]]
-    url = "/about/"
-    name = "about"
-    weight = 4
 
-  # Footer
-  [[menu.footer]]
-    url = "https://github.com/ibookstein"
-    name = "GitHub"
-    weight = 1
-  [[menu.footer]]
-    url = "/blog/index.xml"
-    name = "RSS"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<span data-feather='book'></span>"
+    url = "/posts/"
     weight = 2
-  [[menu.footer]]
-    url = "mailto:foo@bar.com"
-    name = "Contact"
+
+  [[menu.main]]
+    name = "Projects"
+    pre = "<span data-feather='code'></span>"
+    url = "/projects/"
     weight = 3
 
-# Links format
-[permalinks]
-  blog = "/blog/:year/:month/:filename/"
-  writing = "/writing/:year/:month/:filename/"
+  [[menu.main]]
+    name = "Tags"
+    pre = "<span data-feather='tag'></span>"
+    url = "/tags/"
+    weight = 4
 
-[markup.goldmark.renderer]
-unsafe = true
+  [[menu.main]]
+    identifier = "github"
+    pre = "<span data-feather='github'></span>"
+    url = "https://github.com/ibookstein"
+    weight = 5
+
+  # TODO: make this work for posts.
+  [[menu.main]]
+    identifier = "rss"
+    pre = "<span data-feather='rss'></span>"
+    url = "/index.xml"
+    weight = 6
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 4
+    ordered = false
