@@ -11,17 +11,17 @@ enum FloatKind {
 #[derive(Debug, Clone)]
 struct ArbFloat {
     kind: FloatKind,
-    data: BigInt,
+    num: BigInt,
 }
 
 impl ArbFloat {
-    fn new(mut kind: FloatKind, mut data: BigInt) -> Self {
+    fn new(mut kind: FloatKind, mut num: BigInt) -> Self {
         if let FloatKind::Regular { exp } = &mut kind {
-            let adjustment = data.trailing_zeros().unwrap() as i32;
+            let adjustment = num.trailing_zeros().unwrap() as i32;
             *exp += adjustment;
-            data >>= adjustment;
+            num >>= adjustment;
         }
-        Self { kind, data }
+        Self { kind, num }
     }
 }
 
@@ -95,7 +95,7 @@ fn parse(desc: FormatDesc, storage: IntStorage) -> ArbFloat {
     // the fraction by `2^(precision - 1)`, so we compensate by subtracting
     // `precision - 1` from the exponent.
     let exp = biased_exp as i32 - (desc.exp_bias() + desc.precision() - 1);
-    let mut data = BigInt::from(if sign { -1 } else { 1 });
+    let mut num = BigInt::from(if sign { -1 } else { 1 });
     let kind = if biased_exp == desc.biased_exp_mask() {
         if frac == 0 {
             FloatKind::Infinity
@@ -107,14 +107,14 @@ fn parse(desc: FormatDesc, storage: IntStorage) -> ArbFloat {
             FloatKind::Zero
         } else {
             // Subnormals. Multiply by `frac` here only to preserve the sign of zeros.
-            data *= frac;
+            num *= frac;
             FloatKind::Regular { exp: exp + 1 }
         }
     } else {
-        data *= frac | desc.integer_bit();
+        num *= frac | desc.integer_bit();
         FloatKind::Regular { exp }
     };
-    ArbFloat::new(kind, data)
+    ArbFloat::new(kind, num)
 }
 
 fn print_examples() {
