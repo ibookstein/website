@@ -125,6 +125,18 @@ fn print_examples() {
     println!("{:?}", parse(FormatDesc::BINARY64, 0x3FF0_0000_0000_0000)); // 1f64
 }
 
+fn print_binary3() {
+    const BINARY3: FormatDesc = FormatDesc {
+        frac_bits: 1,
+        exp_bits: 1,
+    };
+    for x in 0..8 {
+        println!("{:?}", parse(BINARY3, x));
+    }
+}
+
 fn main() {
     print_examples();
+    println!("");
+    print_binary3();
 }
