@@ -1,5 +1,5 @@
 baseURL = "https://ibookstein.github.io/"
-title = "Working Title"
+title = "Layer of Indirection"
 theme = "gokarna"
 
 languageCode = "en"
@@ -7,19 +7,19 @@ defaultContentLanguage = "en"
 enableEmoji = true
 enableRobotsTXT = true
 
-pygmentsStyle = "nord"
+pygmentsStyle = "monokai"
 
 copyright = "© 2023 — Itay Bookstein — CC BY 4.0"
 
 [params]
-  description = "Itay's Blog"
-  socialIcons = [
-    {name = "github", url = "https://github.com/ibookstein"},
-    {name = "email", url = "mailto:ibookstein@gmail.com"}
-  ]
-  metaKeywords = ["blog", "tech", "rust"]
-  showPostsOnHomePage = "recent"
-  customHeadHTML = '''
+description = "Itay's blog"
+socialIcons = [
+    { name = "github", url = "https://github.com/ibookstein" },
+    { name = "email", url = "mailto:ibookstein@gmail.com" },
+]
+metaKeywords = ["blog", "tech", "rust"]
+showPostsOnHomePage = "recent"
+customHeadHTML = '''
     <style>
     /* Disable floating header. */
 
@@ -61,48 +61,48 @@ copyright = "© 2023 — Itay Bookstein — CC BY 4.0"
     </script>
   '''
 [menu]
-  [[menu.main]]
-    name = "Home"
-    pre = "<span data-feather='home'></span>"
-    url = "/"
-    weight = 1
+[[menu.main]]
+name = "Home"
+pre = "<span data-feather='home'></span>"
+url = "/"
+weight = 1
 
-  [[menu.main]]
-    name = "Posts"
-    pre = "<span data-feather='book'></span>"
-    url = "/posts/"
-    weight = 2
+[[menu.main]]
+name = "Posts"
+pre = "<span data-feather='book'></span>"
+url = "/posts/"
+weight = 2
 
-  [[menu.main]]
-    name = "Projects"
-    pre = "<span data-feather='code'></span>"
-    url = "/projects/"
-    weight = 3
+[[menu.main]]
+name = "Projects"
+pre = "<span data-feather='code'></span>"
+url = "/projects/"
+weight = 3
 
-  [[menu.main]]
-    name = "Tags"
-    pre = "<span data-feather='tag'></span>"
-    url = "/tags/"
-    weight = 4
+[[menu.main]]
+name = "Tags"
+pre = "<span data-feather='tag'></span>"
+url = "/tags/"
+weight = 4
 
-  [[menu.main]]
-    identifier = "github"
-    pre = "<span data-feather='github'></span>"
-    url = "https://github.com/ibookstein"
-    weight = 5
+[[menu.main]]
+identifier = "github"
+pre = "<span data-feather='github'></span>"
+url = "https://github.com/ibookstein"
+weight = 5
 
-  # TODO: make this work for posts.
-  [[menu.main]]
-    identifier = "rss"
-    pre = "<span data-feather='rss'></span>"
-    url = "/index.xml"
-    weight = 6
+# TODO: make this work for posts.
+[[menu.main]]
+identifier = "rss"
+pre = "<span data-feather='rss'></span>"
+url = "/index.xml"
+weight = 6
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-  [markup.tableOfContents]
-    startLevel = 1
-    endLevel = 4
-    ordered = false
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.tableOfContents]
+startLevel = 1
+endLevel = 4
+ordered = false
